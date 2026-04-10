@@ -1,81 +1,47 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
- * UC1: Initialize Train and Display Consist Summary
+ * UC2: Add Passenger Bogies to Train (ArrayList Operations)
  * Single File Version
  */
 
-// Coach class
-class Coach {
-    private String coachType;
-    private int capacity;
-
-    public Coach(String coachType, int capacity) {
-        this.coachType = coachType;
-        this.capacity = capacity;
-    }
-
-    public String getCoachType() {
-        return coachType;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-}
-
-// Train class
-class Train {
-
-    private String trainName;
-    private List<Coach> coaches;
-
-    public Train(String trainName) {
-        this.trainName = trainName;
-        this.coaches = new ArrayList<>();
-    }
-
-    // Add coach
-    public void addCoach(Coach coach) {
-        coaches.add(coach);
-    }
-
-    // Display summary
-    public void displaySummary() {
-        System.out.println("🚆 Train Name: " + trainName);
-        System.out.println("Total Coaches: " + coaches.size());
-
-        int totalCapacity = 0;
-
-        for (Coach c : coaches) {
-            totalCapacity += c.getCapacity();
-        }
-
-        System.out.println("Total Capacity: " + totalCapacity);
-
-        System.out.println("\nCoach Details:");
-        for (Coach c : coaches) {
-            System.out.println("- " + c.getCoachType() +
-                    " | Capacity: " + c.getCapacity());
-        }
-    }
-}
-
-// Main class
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        // Create Train
-        Train train = new Train("Chennai Express");
+        System.out.println("======================================");
+        System.out.println("UC2 - Add Passenger Bogies to Train");
+        System.out.println("======================================\n");
 
-        // Add Coaches
-        train.addCoach(new Coach("Sleeper", 72));
-        train.addCoach(new Coach("AC 3 Tier", 64));
-        train.addCoach(new Coach("AC 2 Tier", 48));
-        train.addCoach(new Coach("General", 90));
+        // Create ArrayList to store passenger bogies
+        List<String> passengerBogies = new ArrayList<>();
 
-        // Display Summary
-        train.displaySummary();
+        // ---- CREATE (Add bogies) ----
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        // Display after adding
+        System.out.println("After Adding Bogies:");
+        System.out.println("Passenger Bogies: " + passengerBogies);
+
+        // ---- DELETE (Remove bogie) ----
+        passengerBogies.remove("AC Chair");
+
+        // Display after removing
+        System.out.println("\nAfter Removing 'AC Chair':");
+        System.out.println("Passenger Bogies: " + passengerBogies);
+
+        // ---- CHECK (contains) ----
+        System.out.println("\nChecking if 'Sleeper' exists:");
+        boolean exists = passengerBogies.contains("Sleeper");
+        System.out.println("Contains Sleeper? : " + exists);
+
+        // ---- FINAL STATE ----
+        System.out.println("\nFinal Train Passenger Consist:");
+        System.out.println(passengerBogies);
+
+        System.out.println("\nUC2 operations completed successfully...");
     }
 }
